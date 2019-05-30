@@ -47,6 +47,27 @@ const styles = StyleSheet.create({
     marginTop: 5,
     backgroundColor: '#0298D0',
     color: 'white'
+  },
+  poland: {
+    backgroundColor: '#DC143C'
+  },
+  ukraine: {
+    backgroundColor: '#FFD500'
+  },
+  uk: {
+    backgroundColor: '#00247D'
+  },
+  spain: {
+    backgroundColor: '#C60D1F'
+  },
+  italy: {
+    backgroundColor: '#029246'
+  },
+  greece: {
+    backgroundColor: '#0D5EAF'
+  },
+  redText: {
+    color: 'red'
   }
 });
 
