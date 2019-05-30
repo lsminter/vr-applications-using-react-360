@@ -8,10 +8,25 @@ import {
 
 export default class travelVR extends React.Component {
   render() {
+    const { mainView, 
+      menuItem,
+      poland,
+      ukraine, 
+      uk, 
+      spain, 
+      italy, 
+      greece,
+      redText
+    } = styles;
+
     return (
-      <View style={styles.mainView}>
-        <Text style={styles.greetings}>Hello Egghead!</Text>
-        <Text style={styles.greetings}>Hello again!</Text>
+      <View style={mainView}>
+        <Text style={[menuItem, poland]}>Poland</Text>
+        <Text style={[menuItem, ukraine]}>Ukraine</Text>
+        <Text style={[menuItem, uk]}>Great Britain</Text>
+        <Text style={[menuItem, spain]}>Spain</Text>
+        <Text style={[menuItem, italy, redText]}>Italy</Text>
+        <Text style={[menuItem, greece]}>Greece</Text>
       </View>
     )
   }
@@ -22,11 +37,13 @@ const styles = StyleSheet.create({
     height: 600, 
     width: 600,
     padding: 10,
-    backgroundColor: '#eee'
+    backgroundColor: '#eee',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
-  greetings: {
+  menuItem: {
     fontSize: 40,
-    width: '50%',
+    width: '30%',
     marginTop: 5,
     backgroundColor: '#0298D0',
     color: 'white'
