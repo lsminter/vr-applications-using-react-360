@@ -3,18 +3,27 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Image,
+  asset
 } from 'react-360';
 
 export default class travelVR extends React.Component {
   render() {
     const { mainView, 
-      text
+      text,
+      flag
     } = styles;
 
     return (
       <View style={mainView}>
-        <Text style={text}>Add an Image here</Text>
+        <Image
+          style={flag}
+          source={{
+            uri:
+              'https://upload.wikimedia.org/wikipedia/commons/5/5a/Flag_of_Poland.jpg'
+          }} />
+        <Image style={flag} source={asset('flag_italy.png')} />
       </View>
     )
   }
@@ -28,9 +37,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#eee',
     alignItems: 'center',
   },
-  text: {
-    color: 'black',
-    fontSize: 40
+  flag: {
+    width: '50%',
+    height: '40%'
   }
 });
 
