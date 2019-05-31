@@ -5,7 +5,7 @@ import Easing from 'Easing';
 import AmbientLight from 'AmbientLight';
 import PointLight from 'PointLight';
 
-const AnimatedEntitiy = Animated.createAnimatedComponent(Entity);
+const AnimatedEntity = Animated.createAnimatedComponent(Entity);
 const LOW_JUMP_VALUE = 1.5;
 const TOP_JUMP_VALUE = 1.75;
 
@@ -19,16 +19,16 @@ export default class Earth extends React.Component {
             toValue: 360,
             duration: 4000,
             easing: Easing.linear
-        }).start(() => this.spin())
+        }).start(() => this.spin());
     }
 
-    jump(currentValue) {
-        let nextValue = currentValue === TOP_JUMP_VALUE ? LOW_JUMP_VALUE : TOP_JUMP_VALUE;
-    
+    jump(value) {
+        let currentVal =
+            value === TOP_JUMP_VALUE ? LOW_JUMP_VALUE : TOP_JUMP_VALUE;
         Animated.timing(this.jumpValue, {
-            toValue: nextValue,
+            toValue: currentVal,
             duration: 500
-        }).start(() => this.jump(nextValue))
+        }).start(() => this.jump(currentVal));
     }
 
     componentDidMount() {
@@ -44,8 +44,8 @@ export default class Earth extends React.Component {
                     intensity={1}
                     style={{ transform: [{ translate: [0, 1, 5] }] }}
                 />
-                <AnimatedEntitiy
-                    source={{ gltf2: asset('earth.gltf') }}
+                <AnimatedEntity
+                    source={{ gltf2: asset('Earth.gltf') }}
                     style={{
                         transform: [
                             { translateY: this.jumpValue },

@@ -7,25 +7,32 @@ import {
     Prefetch,
     View,
     Image,
+    NativeModules,
     VrButton
 } from 'react-360';
 import Flag from './components/Flag';
 import Earth from './components/Earth';
 
+const {TitleChanger} = NativeModules;
+
 const PLACES = [
     {
+        name: 'Space',
         flag: 'flag_nasa.png',
         panorama: 'stars.png'
     },
     {
+        name: 'Spain',
         flag: 'flag_spain.png',
         panorama: 'spain.jpg'
     },
     {
+        name: 'Italy',
         flag: 'flag_italy.png',
         panorama: 'italy.jpg'
     },
     {
+        name: 'Ukraine',
         flag: 'flag_ukraine.jpg',
         panorama: 'ukraine.jpg'
     }
@@ -36,20 +43,20 @@ export default class travelVR extends React.Component {
         activeFlag: ''
     };
 
-    changeBackground(panorama) {
+    changeBackground(panorama, name) {
         Environment.setBackgroundImage(asset(panorama));
+        TitleChanger.changeTitle('Welcome to ' + name);
     }
 
     renderFlags() {
-        return PLACES.map(place => {
-            const { flag, panorama } = place;
+        return PLACES.map(({ flag, panorama, name }) => {
             return (
                 <Fragment key={flag}>
                     <Prefetch source={asset(panorama)} />
                     <VrButton
                         onEnter={() => this.setState({ activeFlag: flag })}
                         onExit={() => this.setState({ activeFlag: '' })}
-                        onClick={() => this.changeBackground(panorama)}
+                        onClick={() => this.changeBackground(panorama, name)}
                     >
                         <Flag image={flag} activeFlag={this.state.activeFlag} />
                     </VrButton>
